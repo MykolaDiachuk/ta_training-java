@@ -13,7 +13,7 @@ public class PastebinHomePage {
     private WebDriver driver;
 
     private By pasteTextArea = By.id("postform-text");
-    private By pasteExperationDropdown = By.id("postform-expiration");
+    private By pasteExperationDropdown = By.xpath("//*[@id=\"w0\"]/div[5]/div[1]/div[4]/div/span/span[1]/span");
     private By pasteNameField  = By.id("postform-name");
     private By createPasteButton  = By.xpath("//*[@id=\"w0\"]/div[5]/div[1]/div[10]/button");
 
@@ -25,17 +25,21 @@ public class PastebinHomePage {
         textArea.sendKeys(code);
     }
     public void selectPasteExpiration(String expiration) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement dropdownElement = wait.until(ExpectedConditions.visibilityOfElementLocated(pasteExperationDropdown));
-        Select dropdown = new Select(dropdownElement);
-        dropdown.selectByValue(expiration);
+        WebElement select2Container = driver.findElement(pasteExperationDropdown);
+        select2Container.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("select2-postform-expiration-results")));
+        WebElement optionToSelect = driver.findElement(By.xpath("//li[contains(text(),'" + expiration + "')]"));
+        optionToSelect.click();
+
     }
     public void enterPasteName(String name) {
         WebElement nameField = driver.findElement(pasteNameField);
         nameField.sendKeys(name);
     }
     public void clickCreatePaste() {
-        WebElement createPasteButton = driver.findElement(this.createPasteButton);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement createPasteButton = wait.until(ExpectedConditions.elementToBeClickable(this.createPasteButton));
         createPasteButton.click();
     }
 

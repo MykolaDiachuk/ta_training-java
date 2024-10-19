@@ -1,5 +1,6 @@
 package com.epam.training.student_mykola_diachuk.prictice1.tests;
 
+import com.epam.training.student_mykola_diachuk.practice1.base.TestUtilities;
 import com.epam.training.student_mykola_diachuk.practice1.pages.PastebinHomePage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PastebinTest {
+public class PastebinTest extends TestUtilities {
     private WebDriver driver;
     private PastebinHomePage homePage;
 
@@ -24,7 +25,7 @@ public class PastebinTest {
     @Test
     public void createPasteTest() {
         homePage.enterCode("Hello from WebDriver");
-        //homePage.selectPasteExpiration("10M");
+        homePage.selectPasteExpiration("10 Minutes");
         homePage.enterPasteName("helloweb");
         homePage.clickCreatePaste();
 
