@@ -15,11 +15,12 @@ public class PastebinTest {
     private PastebinHomePage homePage;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws InterruptedException {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://pastebin.com/");
         homePage = new PastebinHomePage(driver);
+
     }
 
     @Test
