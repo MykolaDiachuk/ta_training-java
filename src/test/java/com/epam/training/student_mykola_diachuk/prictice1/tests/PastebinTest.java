@@ -15,7 +15,7 @@ public class PastebinTest {
     private PastebinHomePage homePage;
 
     @BeforeEach
-    public void setUp() throws InterruptedException {
+    public void setUp()  {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://pastebin.com/");
