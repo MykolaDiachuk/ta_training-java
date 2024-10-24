@@ -138,6 +138,11 @@ public class EstimatePage {
         wait.until(ExpectedConditions.elementToBeClickable(regionDropdown)).click();
         WebElement mt = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"ow6\"]/div/div/div/div/div/div/div[1]/div/div[2]/div[3]/div[29]/div/div[1]/div/div/div/div[2]/ul/li[5]")));
         mt.click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

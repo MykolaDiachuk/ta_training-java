@@ -1,4 +1,4 @@
-package com.epam.training.student_mykola_diachuk.practise3.tests;
+package com.epam.training.student_mykola_diachuk.practice3.tests;
 
 import com.epam.training.student_mykola_diachuk.practice3.pages.CloudHomePage;
 import com.epam.training.student_mykola_diachuk.practice3.pages.EstimatePage;
@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.junit.Assert;
+import org.testng.asserts.SoftAssert;
 
 
 import java.time.Duration;
@@ -50,16 +51,16 @@ public class CloudGoogleTest {
             throw new RuntimeException(e);
         }*/
 
-
-        Assertions.assertEquals("4", summaryPage.getNumberOfInstances());
-        Assertions.assertEquals("Free: Debian, CentOS, CoreOS, Ubuntu or BYOL (Bring Your Own License)", summaryPage.getOperatingSystem());
-        Assertions.assertEquals("Regular", summaryPage.getProvisioningModel());
-        Assertions.assertEquals("n1-standard-8, vCPUs: 8, RAM: 30 GB", summaryPage.getMachineType());
-        Assertions.assertEquals("NVIDIA V100", summaryPage.getGpuType());
-        Assertions.assertEquals("1", summaryPage.getNumberOfGpus());
-        Assertions.assertEquals("2x375 GB", summaryPage.getLocalSsd());
-        Assertions.assertEquals("Netherlands (europe-west4)", summaryPage.getRegion());
-
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(summaryPage.getNumberOfInstances(), "4");
+        softAssert.assertEquals(summaryPage.getOperatingSystem(), "Free: Debian, CentOS, CoreOS, Ubuntu or BYOL (Bring Your Own License)");
+        softAssert.assertEquals(summaryPage.getProvisioningModel(), "Regular");
+        softAssert.assertEquals(summaryPage.getMachineType(), "n1-standard-8, vCPUs: 8, RAM: 30 GB");
+        softAssert.assertEquals(summaryPage.getGpuType(), "NVIDIA V100");
+        softAssert.assertEquals(summaryPage.getNumberOfGpus(), "1");
+        softAssert.assertEquals(summaryPage.getLocalSsd(), "2x375 GB");
+        softAssert.assertEquals(summaryPage.getRegion(), "Netherlands (europe-west4)");
+        softAssert.assertAll();
 
     }
 

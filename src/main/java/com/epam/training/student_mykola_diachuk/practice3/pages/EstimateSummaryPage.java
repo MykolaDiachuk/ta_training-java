@@ -11,9 +11,9 @@ public class EstimateSummaryPage {
     private WebDriverWait wait;
 
     // Локатори для відповідних полів
-    private By numberOfInstancesField = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[6]/span/span[1]/span[2]");
-    private By operatingSystemField = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[7]/span/span[1]/span[2]");
-    private By provisioningModelField = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[8]/span/span[1]/span[2]");////*[@id="yDmH0d"]/c-wiz[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[3]/span[2]/span[1]/span[2]
+    private By numberOfInstancesField = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[7]/span/span[1]/span[2]");
+    private By operatingSystemField = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[8]/span/span[1]/span[2]");
+    private By provisioningModelField = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[9]/span/span[1]/span[2]");////*[@id="yDmH0d"]/c-wiz[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[3]/span[2]/span[1]/span[2]
     private By machineTypeField = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[3]/span[2]/span[1]/span[2]");
     private By gpuTypeField = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[4]/span[2]/span[1]/span[2]");
     private By numberOfGpusField = By.xpath("//*[@id=\"yDmH0d\"]/c-wiz[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/div[4]/span[3]/span[1]/span[2]");
@@ -28,8 +28,10 @@ public class EstimateSummaryPage {
 
     // Методи для отримання значень полів
     public String getNumberOfInstances() {
-       JavascriptExecutor js = (JavascriptExecutor) driver;
-        return (String) js.executeScript("return document.querySelector(\"#yDmH0d > c-wiz.SSPGKf > div > div > div > div > div > div.qBohdf.AlLELb > div.oijjFb > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(6) > span > span.Z7Pe2d.g5Ano > span.Kfvdz\").innerText");
+      /* JavascriptExecutor js = (JavascriptExecutor) driver;
+        return (String) js.executeScript("return document.querySelector(\"#yDmH0d > c-wiz.SSPGKf > div > div > div > div > div > div.qBohdf.AlLELb > div.oijjFb > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(6) > span > span.Z7Pe2d.g5Ano > span.Kfvdz\").innerText");*/
+
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(numberOfInstancesField)).getText();
     }
 
     public String getOperatingSystem() {
