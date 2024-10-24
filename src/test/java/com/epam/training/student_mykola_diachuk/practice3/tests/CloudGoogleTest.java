@@ -45,11 +45,6 @@ public class CloudGoogleTest {
         estimatePage.clickShare();
 
         switchToNewTab();
-       /* try {
-            Thread.sleep(1000000000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }*/
 
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(summaryPage.getNumberOfInstances(), "4");
